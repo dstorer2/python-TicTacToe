@@ -1,15 +1,3 @@
-def makeAMove(size, XTurn):
-    maxIndex = size**2
-    player = "X"
-    if not XTurn:
-        player = "O"
-    print("%s's turn!" %player)
-    move = receivePlayerInput()
-    if not validateInput(receivePlayerInput(), maxIndex):
-        print("Please enter a valid integer between 1 and %s" %maxIndex)
-        return makeAMove()
-    return move
-
 def receivePlayerInput():
     move = input("Please enter the number of the space in which you wish to play\n")
     print("You chose %s" %move)

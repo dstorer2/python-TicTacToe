@@ -12,25 +12,25 @@ class Game:
     def startGame(self):
         self.board.populateBoard()
         self.board.displayBoard()
-        self.play()
+        while not self.game_over:
+            self.play()
     
     def play(self):
-        while not self.game_over:
-            move = receivePlayerInput()
-            if not validateInput(move, self.board.size):
-                return self.play()
-            if not self.board.checkIsEmpty(move):
-                return self.play()
-            self.board.updateBoard(move, self.XTurn)
-            self.board.displayBoard()
-            if self.board.checkForVictory(self.XTurn, self.winningCombos) or self.board.checkForCatsGame():
-                self.game_over = True
-                return
-            self.switchTurns()
-
-    def switchTurns(self):
+        move = receivePlayerInput()
+        if not self.validations(move):
+            return
+        self.board.updateBoard(move, self.XTurn)
+        self.board.displayBoard()
+        if self.board.checkForVictory(self.XTurn, self.winningCombos) or self.board.checkForCatsGame():
+            self.game_over = True
         self.XTurn = not self.XTurn
-
+    
+    def validations(self, move):
+        isValid = False
+        if validateInput(move, self.board.size):
+            if self.board.checkIsEmpty(move):
+                isValid = True
+        return isValid
 
 new_game = Game()
 new_game.startGame()

@@ -1,4 +1,4 @@
-from cell import *
+from helpers.cell import *
 
 class Board:
     def __init__(self, size = 3):
@@ -20,8 +20,8 @@ class Board:
         print(" ")
         horizontalBreak = "-"*((self.size*4)-1)
         verticalSpace = " | "
-        i=0
-        j=0
+        i = 0
+        j = 0
         lineBreak = self.size
         while i < self.size:
             row = " "
@@ -30,22 +30,22 @@ class Board:
                 displayAttribute = cell.value
                 if not displayAttribute:
                     displayAttribute = cell.index
-                row +=str(displayAttribute)
+                row += str(displayAttribute)
                 if j != lineBreak-1:
-                    row +=verticalSpace
-                j +=1
-            if i != self.size-1:
+                    row += verticalSpace
+                j += 1
+            if i != self.size - 1:
                 print(row)
                 print(horizontalBreak)
             else:
                 print(row)
-            i +=1
+            i += 1
             lineBreak += self.size
         print(" ")
     
     def checkIsEmpty(self, move):
         isEmpty = True
-        if self.grid[int(move)-1].value:
+        if self.grid[int(move) - 1].value:
             isEmpty = False
             print("That space has already been taken. Please select another space")
         return isEmpty
