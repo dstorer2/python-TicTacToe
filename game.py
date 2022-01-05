@@ -31,13 +31,6 @@ class Game:
     def switchTurns(self):
         self.XTurn = not self.XTurn
 
-    def endGame(self, XWins):
-        if XWins:
-            print("X wins!")
-
-        return
-
-
 
 new_game = Game()
 new_game.startGame()
