@@ -1,5 +1,5 @@
-from board import *
-from actions import *
+from helpers.board import *
+from helpers.actions import *
 import math
 
 class Game:
